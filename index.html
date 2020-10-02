@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="Joystick.js"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+        canvas{
+            border: 1px solid black;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas = document.getElementById('canvas')
+        canvas.width = window.innerWidth
+        canvas.height = canvas.width * (720/1280)
+
+        let radius = canvas.width * 0.10
+        let x = radius + canvas.width * .05
+        let y = canvas.height - (radius + canvas.width * 0.05)
+
+        let joystick = new Joystick(canvas, {x, y}, radius)
+        joystick.addListeners()
+        
+        requestAnimationFrame(() => {
+            joystick.drawJoystick()
+        })
+    </script>
+</body>
+</html>
